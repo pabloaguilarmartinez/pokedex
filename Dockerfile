@@ -8,6 +8,5 @@ EXPOSE 8080
 RUN mkdir /app
 
 COPY --from=build /home/gradle/src/build/libs/pokedex-0.0.1.jar /app/pokedex-0.0.1.jar
-ENV SPRING_PROFILES_ACTIVE=dev
 
 ENTRYPOINT ["java","-jar","/app/pokedex-0.0.1.jar"]
