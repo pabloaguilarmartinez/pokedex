@@ -91,7 +91,7 @@ class PokemonApplicationServiceTest {
         List<Filter> filters = new ArrayList<>();
         Filter nameFilter = new Filter("name", query.name());
         filters.add(nameFilter);
-        Filter typeFilter = new Filter("type", query.type().name());
+        Filter typeFilter = new Filter("types", query.type().name());
         filters.add(typeFilter);
         Criteria expectedCriteria = new Criteria(new Filters(filters));
         verify(pokemonRepository).matching(expectedCriteria);

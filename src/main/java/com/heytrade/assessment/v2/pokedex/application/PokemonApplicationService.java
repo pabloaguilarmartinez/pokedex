@@ -66,7 +66,7 @@ public class PokemonApplicationService {
             filters.add(nameFilter);
         }
         if (Objects.nonNull(query.type())) {
-            Filter typeFilter = new Filter("type", query.type().name());
+            Filter typeFilter = new Filter("types", query.type().name());
             filters.add(typeFilter);
         }
         if (query.onlyFavourites()) {
