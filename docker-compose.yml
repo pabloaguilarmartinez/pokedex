@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+  pokedex:
+    container_name: pokedex
+    restart: always
+    build:
+      context: .
+    depends_on:
+      - db
+    ports:
+      - '8080:8080'
+
+  db:
+    image: mysql:8.0.30
+    environment:
+      MYSQL_DATABASE: pokedex
+      MYSQL_USER: compose-mysql
+      MYSQL_ROOT_PASSWORD: compose-mysql
+      MYSQL_PASSWORD: compose-mysql
+    ports:
+      - '3306:3306'
