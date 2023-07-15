@@ -1,5 +1,6 @@
 package com.heytrade.assessment.v2.pokedex.domain.model;
 
+import java.util.Objects;
 import java.util.Set;
 
 public class Pokemon {
@@ -143,5 +144,17 @@ public class Pokemon {
         public Pokemon build() {
             return new Pokemon(this);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Pokemon pokemon)) return false;
+        return isFavourite == pokemon.isFavourite && Objects.equals(id, pokemon.id) && Objects.equals(name, pokemon.name) && Objects.equals(types, pokemon.types) && Objects.equals(weight, pokemon.weight) && Objects.equals(height, pokemon.height) && Objects.equals(combatPower, pokemon.combatPower) && Objects.equals(hitPoints, pokemon.hitPoints) && Objects.equals(imageUrl, pokemon.imageUrl) && Objects.equals(soundUrl, pokemon.soundUrl);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, types, weight, height, combatPower, hitPoints, isFavourite, imageUrl, soundUrl);
     }
 }
