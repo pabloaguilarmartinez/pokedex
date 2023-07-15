@@ -43,7 +43,7 @@ class PokemonControllerTest {
     }
 
     @Test
-    void whenGetPokemonsByCriteria_shouldThrowExceptionIfCriteriaIsSpecified() {
+    void whenGetPokemonsByCriteria_shouldThrowExceptionIfCriteriaIsNotSpecified() {
         assertThatThrownBy(() -> pokemonController.getPokemonsByCriteria(null, null))
                 .isInstanceOf(PokemonDomainException.class)
                 .hasMessageContaining("Must specify one criteria at least.");
@@ -59,7 +59,7 @@ class PokemonControllerTest {
     }
 
     @Test
-    void whenGetFavouritePokemonsByCriteria_shouldThrowExceptionIfCriteriaIsSpecified() {
+    void whenGetFavouritePokemonsByCriteria_shouldThrowExceptionIfCriteriaIsNotSpecified() {
         assertThatThrownBy(() -> pokemonController.getFavouritePokemonsByCriteria(null, null))
                 .isInstanceOf(PokemonDomainException.class)
                 .hasMessageContaining("Must specify one criteria at least.");
@@ -75,7 +75,7 @@ class PokemonControllerTest {
     }
 
     @Test
-    void whenPokemonDetails_shouldReturnOk() {
+    void whenGetPokemonDetails_shouldReturnOk() {
         Long pokemonId = 1L;
 
         ResponseEntity<PokemonDetailedResponse> response = pokemonController.getPokemonDetails(pokemonId);
