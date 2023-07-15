@@ -1,13 +1,9 @@
 package com.heytrade.assessment.v2.pokedex.infrastructure.repository.jpa.entity;
 
-import com.heytrade.assessment.v2.pokedex.domain.model.PokemonType;
-import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.*;
-
-import java.util.Set;
 
 @Getter
 @Setter
@@ -20,8 +16,7 @@ public class PokemonEntity {
     @Id
     private Long id;
     private String name;
-    @Convert(converter = StringSetPokemonTypeConverter.class)
-    private Set<PokemonType> types;
+    private String types;
     private Float lowerWeight;
     private Float higherWeight;
     private String weightUnits;
