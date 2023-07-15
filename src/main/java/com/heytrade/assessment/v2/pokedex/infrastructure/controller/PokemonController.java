@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Objects;
 
 @RestController
-@RequestMapping("/pokemons")
+@RequestMapping(value = "/pokemons", produces = "application/json")
 @RequiredArgsConstructor
 @Slf4j
 public class PokemonController {
