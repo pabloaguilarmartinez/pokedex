@@ -24,6 +24,7 @@ public class PokemonDataAccessMapper {
                 .hitPoints(pokemon.hitPoints())
                 .isFavourite(pokemon.isFavourite())
                 .imageUrl(pokemon.imageUrl())
+                .soundUrl(pokemon.soundUrl())
                 .build();
     }
 
@@ -38,6 +39,7 @@ public class PokemonDataAccessMapper {
                 .hitPoints(pokemonEntity.getHitPoints())
                 .isFavourite(pokemonEntity.isFavourite())
                 .imageUrl(pokemonEntity.getImageUrl())
+                .soundUrl(pokemonEntity.getSoundUrl())
                 .build();
     }
 }

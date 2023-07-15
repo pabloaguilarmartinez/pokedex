@@ -32,4 +32,5 @@ public class PokemonEntity {
     private Integer hitPoints;
     private boolean isFavourite;
     private String imageUrl;
+    private String soundUrl;
 }
