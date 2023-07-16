@@ -24,3 +24,5 @@ and also to provide greater clarity and separation of responsibilities, I have o
 the most important thing that the API is easy to understand, use and maintain. Putting it together would not avoid 
 this, but it would need to be properly documented how it should be used, and more so if filters could grow in the 
 future.
+- If we wanted for example to search for pokemons that have more combar power, we could add to the criteria filters an 
+operator field, to distinguish when we want to search for the same or similar strings; for higher, lower or equal numbers...
