@@ -27,7 +27,7 @@ class PokemonControllerTest {
     private PokemonController pokemonController;
 
     @Test
-    void whenGetEmAll_shouldReturnOk() {
+    void whenGetEmAll_thenReturnOk() {
         ResponseEntity<PokemonsResponse> response = pokemonController.getEmAll();
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
@@ -35,7 +35,7 @@ class PokemonControllerTest {
     }
 
     @Test
-    void whenGetYourFavouritePokemons_shouldReturOk() {
+    void whenGetYourFavouritePokemons_thenReturOk() {
         ResponseEntity<PokemonsResponse> response = pokemonController.getYourFavouritePokemons();
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
@@ -50,7 +50,7 @@ class PokemonControllerTest {
     }
 
     @Test
-    void whenGetPokemonsByCriteria_shouldReturnOk() {
+    void whenGetPokemonsByCriteria_thenReturnOk() {
         ResponseEntity<PokemonsResponse> response = pokemonController.getPokemonsByCriteria("foo", null);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
@@ -66,7 +66,7 @@ class PokemonControllerTest {
     }
 
     @Test
-    void whenGetFavouritePokemonsByCriteria_shouldReturnOk() {
+    void whenGetFavouritePokemonsByCriteria_thenReturnOk() {
         ResponseEntity<PokemonsResponse> response = pokemonController.getFavouritePokemonsByCriteria("foo", null);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
@@ -75,7 +75,7 @@ class PokemonControllerTest {
     }
 
     @Test
-    void whenGetPokemonDetails_shouldReturnOk() {
+    void whenGetPokemonDetails_thenReturnOk() {
         Long pokemonId = 1L;
 
         ResponseEntity<PokemonDetailedResponse> response = pokemonController.getPokemonDetails(pokemonId);
@@ -86,7 +86,7 @@ class PokemonControllerTest {
     }
 
     @Test
-    void whenAddOrRemovePokemonFromFavourites_shouldReturnNoContent() {
+    void whenAddOrRemovePokemonFromFavourites_thenReturnNoContent() {
         Long pokemonId = 1L;
 
         ResponseEntity<Void> response = pokemonController.addOrRemovePokemonFromFavourites(pokemonId);

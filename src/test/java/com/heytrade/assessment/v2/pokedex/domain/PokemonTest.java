@@ -52,7 +52,7 @@ class PokemonTest {
     }
 
     @Test
-    void givenPokemon_whenSwitchIsFavourite_shouldChangeValue() {
+    void givenPokemon_whenSwitchIsFavourite_thenChangeValue() {
         Pokemon pokemon = PokemonMother.squirtleAsFavourite();
 
         pokemon.switchIsFavourite();

@@ -38,7 +38,7 @@ class PokemonRepositoryImplTest {
     private PokemonRepositoryImpl pokemonRepository;
 
     @Test
-    void givenPokemon_whenSave_shouldPersistEntity() {
+    void givenPokemon_whenSave_thenPersistEntity() {
         Pokemon pokemon = PokemonMother.squirtle();
 
         pokemonRepository.save(pokemon);
@@ -47,17 +47,17 @@ class PokemonRepositoryImplTest {
     }
 
     @Test
-    void givenPokemonId_whenFindByID_shouldReturnPokemonDomain() {
+    void givenPokemonId_whenFindByID_thenReturnPokemonDomain() {
         PokemonId id = new PokemonId(1L);
         when(pokemonJpaRepository.findById(any())).thenReturn(Optional.ofNullable(PokemonEntityMother.bulbasur()));
 
         Optional<Pokemon> pokemon = pokemonRepository.findById(id);
 
-        assertThat(pokemon.get()).isEqualTo(PokemonMother.bulbasur());
+        assertThat(pokemon.orElseThrow()).isEqualTo(PokemonMother.bulbasur());
     }
 
     @Test
-    void whenFindAll_shouldReturnAllInDatabase() {
+    void whenFindAll_thenReturnAllInDatabase() {
         List<PokemonEntity> pokemonsInDatabase = List.of(PokemonEntityMother.bulbasur(), PokemonEntityMother.charmander(),
                 PokemonEntityMother.squirtle(), PokemonEntityMother.pikachu());
         when(pokemonJpaRepository.findAll()).thenReturn(pokemonsInDatabase);
@@ -72,7 +72,7 @@ class PokemonRepositoryImplTest {
     }
 
     @Test
-    void whenFindFavourites_shouldReturnFavouritePokemons() {
+    void whenFindFavourites_thenReturnFavouritePokemons() {
         List<PokemonEntity> favouritePokemonsInDatabase = List.of(PokemonEntityMother.squirtleAsFavourite());
         when(pokemonJpaRepository.findByIsFavouriteTrue()).thenReturn(favouritePokemonsInDatabase);
 
@@ -83,7 +83,7 @@ class PokemonRepositoryImplTest {
     }
 
     @Test
-    void givenCriteria_whenMatching_shouldReturnPokemonsThatMatch() {
+    void givenCriteria_whenMatching_thenReturnPokemonsThatMatch() {
         List<Filter> filters = new ArrayList<>();
         Filter nameFilter = new Filter("name", "ch");
         filters.add(nameFilter);

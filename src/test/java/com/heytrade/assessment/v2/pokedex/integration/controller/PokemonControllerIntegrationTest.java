@@ -47,7 +47,7 @@ class PokemonControllerIntegrationTest {
     }
 
     @Test
-    void whenGetEmAll_shouldReturnAllPokemonAndIsOk() throws Exception {
+    void whenGetEmAll_thenReturnAllPokemonAndIsOk() throws Exception {
         List<Pokemon> allPokemons = List.of(PokemonMother.bulbasur(), PokemonMother.charmander(),
                 PokemonMother.squirtle(), PokemonMother.pikachu());
         PokemonsResponse allPokemonsResponse = new PokemonsResponse(allPokemons.stream().map(PokemonBasicInfoResponse::fromAggregate).toList());
@@ -59,7 +59,7 @@ class PokemonControllerIntegrationTest {
     }
 
     @Test
-    void whenGetYourFavouritePokemons_shouldReturYourFavouritePokemonsAndIsOk() throws Exception {
+    void whenGetYourFavouritePokemons_thenReturYourFavouritePokemonsAndIsOk() throws Exception {
         List<Pokemon> myFavouritePokemons = List.of(PokemonMother.squirtleAsFavourite());
         PokemonsResponse myFavouritePokemonsResponse = new PokemonsResponse(myFavouritePokemons.stream().map(PokemonBasicInfoResponse::fromAggregate).toList());
         when(pokemonApplicationService.getFavouritePokemons()).thenReturn(myFavouritePokemonsResponse);
@@ -70,13 +70,13 @@ class PokemonControllerIntegrationTest {
     }
 
     @Test
-    void whenGetPokemonsByCriteria_shouldReturnIsBadRequestIfCriteriaIsNotSpecified() throws Exception {
+    void whenGetPokemonsByCriteria_thenReturnIsBadRequestIfCriteriaIsNotSpecified() throws Exception {
         mockMvc.perform(get("/pokemons/search"))
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    void whenGetPokemonsByCriteria_shouldReturnPokemonsThatMatchAndIsOk() throws Exception {
+    void whenGetPokemonsByCriteria_thenReturnPokemonsThatMatchAndIsOk() throws Exception {
         List<Pokemon> matching = List.of(PokemonMother.charmander());
         PokemonsResponse matchingResponse = new PokemonsResponse(matching.stream().map(PokemonBasicInfoResponse::fromAggregate).toList());
         when(pokemonApplicationService.search(any())).thenReturn(matchingResponse);
@@ -87,13 +87,13 @@ class PokemonControllerIntegrationTest {
     }
 
     @Test
-    void whenGetFavouritePokemonsByCriteria_shouldReturnIsBadRequestIfCriteriaIsNotSpecified() throws Exception {
+    void whenGetFavouritePokemonsByCriteria_thenReturnIsBadRequestIfCriteriaIsNotSpecified() throws Exception {
         mockMvc.perform(get("/pokemons/favourites/search"))
                 .andExpect(status().isBadRequest());
     }
 
     @Test
-    void whenGetFavouritePokemonsByCriteria_shouldReturnPokemonsThatMatchAndIsOk() throws Exception {
+    void whenGetFavouritePokemonsByCriteria_thenReturnPokemonsThatMatchAndIsOk() throws Exception {
         List<Pokemon> matching = List.of(PokemonMother.squirtleAsFavourite());
         PokemonsResponse matchingResponse = new PokemonsResponse(matching.stream().map(PokemonBasicInfoResponse::fromAggregate).toList());
         when(pokemonApplicationService.search(any())).thenReturn(matchingResponse);
@@ -104,7 +104,7 @@ class PokemonControllerIntegrationTest {
     }
 
     @Test
-    void whenGetPokemonDetails_shouldReturnPokemonAndIsOk() throws Exception {
+    void whenGetPokemonDetails_thenReturnPokemonAndIsOk() throws Exception {
         Pokemon pokemon = PokemonMother.bulbasur();
         PokemonDetailedResponse pokemonResponse = PokemonDetailedResponse.fromAggregate(pokemon);
         when(pokemonApplicationService.getPokemon(any())).thenReturn(pokemonResponse);
@@ -115,7 +115,7 @@ class PokemonControllerIntegrationTest {
     }
 
     @Test
-    void whenGetPokemonDetails_shouldReturnIsNotFoundIfItDoesNotExist() throws Exception {
+    void whenGetPokemonDetails_thenReturnIsNotFoundIfItDoesNotExist() throws Exception {
         when(pokemonApplicationService.getPokemon(any())).thenThrow(PokemonNotFoundException.class);
 
         mockMvc.perform(get("/pokemons/1"))
@@ -123,13 +123,13 @@ class PokemonControllerIntegrationTest {
     }
 
     @Test
-    void whenAddOrRemovePokemonFromFavourites_shouldReturnIsNoContent() throws Exception {
+    void whenAddOrRemovePokemonFromFavourites_thenReturnIsNoContent() throws Exception {
         mockMvc.perform(put("/pokemons/1/favourite"))
                 .andExpect(status().isNoContent());
     }
 
     @Test
-    void whenAddOrRemovePokemonFromFavourites_shouldReturnIsNotFoundIfItDoesNotExist() throws Exception {
+    void whenAddOrRemovePokemonFromFavourites_thenReturnIsNotFoundIfItDoesNotExist() throws Exception {
         doThrow(PokemonNotFoundException.class).when(pokemonApplicationService).modifyPokemonIsFavouriteStatus(any());
 
         mockMvc.perform(put("/pokemons/1/favourite"))

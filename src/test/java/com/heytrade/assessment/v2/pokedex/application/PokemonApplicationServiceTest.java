@@ -47,7 +47,7 @@ class PokemonApplicationServiceTest {
     }
 
     @Test
-    void givenQueryToFindPokemon_whenGetPokemon_shouldReturnDetailedResponse() {
+    void givenQueryToFindPokemon_whenGetPokemon_thenReturnDetailedResponse() {
         FindPokemonQuery query = new FindPokemonQuery(1L);
         Optional<Pokemon> expectedPokemon = Optional.of(PokemonMother.charmander());
         when(pokemonRepository.findById(any())).thenReturn(expectedPokemon);
@@ -70,7 +70,7 @@ class PokemonApplicationServiceTest {
     }
 
     @Test
-    void givenCommandToSwitchPokemonIsFavourite_whenModifyPokemonIsFavouriteStatus_shouldModifyStatusAndPersist() {
+    void givenCommandToSwitchPokemonIsFavourite_whenModifyPokemonIsFavouriteStatus_thenModifyStatusAndPersist() {
         SwitchPokemonIsFavouriteCommand command = new SwitchPokemonIsFavouriteCommand(1L);
         Optional<Pokemon> expectedPokemon = Optional.of(PokemonMother.bulbasur());
         when(pokemonRepository.findById(any())).thenReturn(expectedPokemon);
@@ -83,7 +83,7 @@ class PokemonApplicationServiceTest {
     }
 
     @Test
-    void givenQueryToSearchPokemons_whenSearch_shouldCreateCriteriaWithFilters() {
+    void givenQueryToSearchPokemons_whenSearch_thenCreateCriteriaWithFilters() {
         SearchPokemonMatchingQuery query = new SearchPokemonMatchingQuery("Squirtle", PokemonType.WATER, false);
 
         pokemonApplicationService.search(query);
@@ -98,7 +98,7 @@ class PokemonApplicationServiceTest {
     }
 
     @Test
-    void givenQueryToSearchPokemonsByName_whenSearch_shouldCreateCriteriaWithOneFilter() {
+    void givenQueryToSearchPokemonsByName_whenSearch_thenCreateCriteriaWithOneFilter() {
         SearchPokemonMatchingQuery query = new SearchPokemonMatchingQuery("Bul", null, false);
 
         pokemonApplicationService.search(query);
@@ -111,7 +111,7 @@ class PokemonApplicationServiceTest {
     }
 
     @Test
-    void givenQueryToSearchPokemonsByNameAndIsFavourite_whenSearch_shouldCreateCriteriaWithFilters() {
+    void givenQueryToSearchPokemonsByNameAndIsFavourite_whenSearch_thenCreateCriteriaWithFilters() {
         SearchPokemonMatchingQuery query = new SearchPokemonMatchingQuery("Bul", null, true);
 
         pokemonApplicationService.search(query);
