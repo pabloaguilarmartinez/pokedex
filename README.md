@@ -22,5 +22,5 @@ pokemons.
 - We could put some endpoints together, such as `/pokemons` and `/pokemons/search`, but in order to keep it simple, 
 and also to provide greater clarity and separation of responsibilities, I have opted for this option first, considering 
 the most important thing that the API is easy to understand, use and maintain. Putting it together would not avoid 
-this, but it would need to be properly documented how it should be used, and more so if I could grow the filters in the 
+this, but it would need to be properly documented how it should be used, and more so if filters could grow in the 
 future.
