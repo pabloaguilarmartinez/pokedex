@@ -10,8 +10,8 @@ services:
       - MYSQL_ROOT_PASSWORD=
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     ports:
-      - '3360:3306'
-    command: [ "--default-authentication-plugin=mysql_native_password" ]
+      - '3306:3306'
+    command: ["--default-authentication-plugin=mysql_native_password"]
 
   java:
     container_name: pokedex
